@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panadería y Repostería Artesanal | San Cristóbal</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --pastel-blue: #e0f2fe;
+            --pastel-blue-hover: #bae6fd;
+            --neutral-gray: #f8fafc;
+            --dark-gray: #334155;
+            --accent-gold: #d97706;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-gray);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(224, 242, 254, 0.6) 0%, rgba(248, 250, 252, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 120px 0 90px 0;
+            position: relative;
+        }
+
+        .badge-táchira {
+            background-color: var(--pastel-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s ease;
+        }
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+        }
+
+        .btn-custom-outline {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-custom-outline:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Cards */
+        .product-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(29, 78, 216, 0.15);
+        }
+        .product-img {
+            height: 220px;
+            object-fit: cover;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        /* Floating Widgets */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .floating-instagram {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .floating-instagram:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* Sections */
+        .bg-pastel {
+            background-color: var(--pastel-blue);
+        }
+        .bg-gray-custom {
+            background-color: var(--neutral-gray);
+        }
+
+        /* Features */
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--pastel-blue);
+            color: var(--primary-blue);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="fa-solid fa-wheat-awn text-primary fs-3"></i>
+                <span class="brand-title fw-bold fs-4 text-dark">Panadería Táchira</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center gap-3 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link fw-medium text-dark" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium text-dark" href="#menu">Menú Estrella</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium text-dark" href="#automatizacion">Tecnología n8n</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium text-dark" href="#testimonios">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium text-dark" href="#contacto">Ubicación</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20realizar%20un%20pedido%20de%20panadería%20y%20pastelería." target="_blank" class="btn btn-whatsapp btn-sm px-4">
+                            <i class="fab fa-whatsapp me-2"></i> Pedir por WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-75 pt-5">
+                <div class="col-lg-7 text-center text-lg-start mb-5 mb-lg-0">
+                    <span class="badge-táchira">
+                        <i class="fa-solid fa-location-dot me-1"></i> San Cristóbal, Estado Táchira
+                    </span>
+                    <h1 class="display-4 fw-bold text-dark mb-4">
+                        El pan más fresco y suave de San Cristóbal, directo a tu mesa
+                    </h1>
+                    <p class="lead text-secondary mb-5">
+                        Disfruta de panadería artesanal de masa madre, golfeados crujientes, piñitas recién salidas del horno y repostería de primera calidad. Haz tu pedido en línea o agenda tu despacho al instante.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                        <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20hacer%20un%20pedido%20para%20hoy." target="_blank" class="btn btn-whatsapp btn-lg px-4 py-3">
+                            <i class="fab fa-whatsapp me-2"></i> Haz tu pedido por WhatsApp
+                        </a>
+                        <a href="#menu" class="btn btn-custom-outline btn-lg px-4 py-3">
+                            Ver Menú y Precios
+                        </a>
+                    </div>
+                    <div class="mt-4 text-muted small">
+                        <i class="fa-solid fa-shield-check text-primary me-1"></i> Pago Móvil, Zelle, Efectivo USD/COP &bull; Delivery Rápido en la Ciudad
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" alt="Pan Artesanal Recién Horneado" class="img-fluid rounded-4 shadow-lg border border-4 border-white">
+                        <div class="position-absolute bottom-0 start-0 bg-white p-3 rounded-3 shadow m-3 border-start border-4 border-primary text-start">
+                            <div class="fw-bold text-dark small"><i class="fa-solid fa-fire text-danger me-1"></i> ¡Hornada Fresca!</div>
+                            <div class="text-secondary" style="font-size: 0.85rem;">Pan campesino y golfeados listos.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-5 bg-pastel">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <h3 class="fw-bold text-primary display-5 mb-1">+5,000</h3>
+                        <p class="text-secondary fw-medium mb-0">Familias satisfechas en San Cristóbal</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <h3 class="fw-bold text-primary display-5 mb-1">3 Horadas</h3>
+                        <p class="text-secondary fw-medium mb-0">Diarias para garantizar frescura absoluta</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <h3 class="fw-bold text-primary display-5 mb-1">100%</h3>
+                        <p class="text-secondary fw-medium mb-0">Atención personalizada y rápida vía chat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu & Star Products -->
+    <section id="menu" class="py-5 bg-gray-custom">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase tracking-wider small">Catálogo Exclusivo</span>
+                <h2 class="fw-bold display-5 mt-2">Nuestros Productos Estrella</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">Elaborados con ingredientes seleccionados y el toque tradicional tachirense. Pide directo al WhatsApp.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-md-4">
+                    <div class="product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80" alt="Golfeados con Queso" class="product-img w-100">
+                        <div class="p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-light text-primary mb-2">Tradición</span>
+                                <h4 class="fw-bold text-dark">Golfeados con Queso Telita</h4>
+                                <p class="text-secondary small">Masa suave enrollada con papelón aromático, anís y generosa capa de queso fresco de la región.</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                                <span class="fw-bold text-dark fs-5">$2.50 / c/u</span>
+                                <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20pedir%20Golfeados%20con%20Queso." target="_blank" class="btn btn-sm btn-whatsapp px-3">
+                                    <i class="fab fa-whatsapp me-1"></i> Pedir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-4">
+                    <div class="product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Pan de Sánguche Artesanal" class="product-img w-100">
+                        <div class="p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-light text-primary mb-2">Panadería Diaria</span>
+                                <h4 class="fw-bold text-dark">Pan de Sánguche / Molde</h4>
+                                <p class="text-secondary small">Suave miga y corteza delicada, horneado sin conservantes artificiales. Ideal para desayunos familiares.</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                                <span class="fw-bold text-dark fs-5">$1.80 / unidad</span>
+                                <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20pedir%20Pan%20de%20Sánguche." target="_blank" class="btn btn-sm btn-whatsapp px-3">
+                                    <i class="fab fa-whatsapp me-1"></i> Pedir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-4">
+                    <div class="product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Cachitos de Jamón" class="product-img w-100">
+                        <div class="p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-light text-primary mb-2">Favoritos</span>
+                                <h4 class="fw-bold text-dark">Cachitos de Jamón y Queso</h4>
+                                <p class="text-secondary small">Masa hojaldrada y dorada, rellena de abundante jamón ahumado y toque de queso fundido.</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                                <span class="fw-bold text-dark fs-5">$2.00 / c/u</span>
+                                <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20pedir%20Cachitos%20de%20Jamón." target="_blank" class="btn btn-sm btn-whatsapp px-3">
+                                    <i class="fab fa-whatsapp me-1"></i> Pedir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-md-4">
+                    <div class="product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Tortas Personalizadas" class="product-img w-100">
+                        <div class="p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-light text-primary mb-2">Repostería</span>
+                                <h4 class="fw-bold text-dark">Tortas para Cumpleaños y Eventos</h4>
+                                <p class="text-secondary small">Diseños personalizados, sabores a chocolate, tres leches o red velvet con rellenos cremosos.</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                                <span class="fw-bold text-dark fs-5">Desde $20.00</span>
+                                <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20cotizar%20una%20torta%20especial." target="_blank" class="btn btn-sm btn-whatsapp px-3">
+                                    <i class="fab fa-whatsapp me-1"></i> Cotizar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col-md-4">
+                    <div class="product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1530610476181-d83430b64dcd?auto=format&fit=crop&w=600&q=80" alt="Piñitas y Panes Dulces" class="product-img w-100">
+                        <div class="p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-light text-primary mb-2">Tradicional</span>
+                                <h4 class="fw-bold text-dark">Piñitas Dulces y Pan Aliñado</h4>
+                                <p class="text-secondary small">Pequeños panes dulces con cobertura azucarada crujiente, perfectos para acompañar el café de la tarde.</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                                <span class="fw-bold text-dark fs-5">$1.50 / bolsa</span>
+                                <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20pedir%20Piñitas%20Dulces." target="_blank" class="btn btn-sm btn-whatsapp px-3">
+                                    <i class="fab fa-whatsapp me-1"></i> Pedir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="col-md-4">
+                    <div class="product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" alt="Combos de Pasapalos" class="product-img w-100">
+                        <div class="p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-light text-primary mb-2">Corporativo</span>
+                                <h4 class="fw-bold text-dark">Combos de Pasapalos Variados</h4>
+                                <p class="text-secondary small">Mini cachitos, tequeños y pastelitos surtidos para reuniones, eventos y celebraciones corporativas.</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top">
+                                <span class="fw-bold text-dark fs-5">Desde $15.00</span>
+                                <a href="https://wa.me/584129186690?text=¡Hola!%20Me%20interesan%20los%20combos%20de%20pasapalos." target="_blank" class="btn btn-sm btn-whatsapp px-3">
+                                    <i class="fab fa-whatsapp me-1"></i> Pedir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automation & n8n Architecture Section -->
+    <section id="automatizacion" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="badge-táchira">Innovación Tecnológica</span>
+                    <h2 class="fw-bold display-6 mb-4">Atención Inteligente y Automatización con n8n</h2>
+                    <p class="text-secondary mb-4">
+                        En nuestra panadería combinamos la tradición culinaria con la última tecnología digital. Utilizamos flujos automatizados conectados a la API de WhatsApp para gestionar tus pedidos sin esperas, verificar pagos al instante mediante OCR y despachar con máxima eficiencia.
+                    </p>
+                    <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+                        <li class="d-flex align-items-start gap-3">
+                            <div class="bg-primary text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; flex-shrink: 0;">
+                                <i class="fa-solid fa-check fs-6"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Validación Automática de Pagos</h6>
+                                <p class="text-secondary small mb-0">Verificación inmediata de comprobantes de Pago Móvil y Zelle en segundos.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <div class="bg-primary text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; flex-shrink: 0;">
+                                <i class="fa-solid fa-check fs-6"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Alertas de Pan Recién Horneado</h6>
+                                <p class="text-secondary small mb-0">Notificaciones instantáneas en nuestro canal cuando sale una tanda caliente.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <div class="bg-primary text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; flex-shrink: 0;">
+                                <i class="fa-solid fa-check fs-6"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Cotizador Inteligente de Repostería</h6>
+                                <p class="text-secondary small mb-0">Calcula presupuestos de tortas y eventos a medida de forma interactiva.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/584129186690?text=¡Hola!%20Quisiera%20probar%20el%20asistente%20automatizado." target="_blank" class="btn btn-primary px-4 py-3 rounded-pill fw-semibold shadow">
+                        <i class="fa-solid fa-bolt me-2"></i> Conectar con el Asistente
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-pastel p-4 rounded-4 shadow-sm border border-info border-opacity-25">
+                        <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-diagram-project text-primary me-2"></i> Flujo de Pedidos Operativo</h5>
+                        <div class="bg-white p-3 rounded-3 mb-3 shadow-sm">
+                            <span class="badge bg-primary mb-1">Paso 1</span>
+                            <p class="mb-0 small fw-medium text-dark">Cliente envía solicitud o comprobante por WhatsApp al +58 412-9186690.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-3 mb-3 shadow-sm">
+                            <span class="badge bg-info text-dark mb-1">Paso 2</span>
+                            <p class="mb-0 small fw-medium text-dark">Webhook n8n procesa la información y valida datos de pago y menú.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-3 shadow-sm">
+                            <span class="badge bg-success mb-1">Paso 3</span>
+                            <p class="mb-0 small fw-medium text-dark">Asignación automática a despacho en San Cristóbal y confirmación al cliente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="py-5 bg-gray-custom">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase tracking-wider small">Testimonios Locales</span>
+                <h2 class="fw-bold display-5 mt-2">Lo que opinan en San Cristóbal</h2>
+                <p class="text-secondary">Clientes reales que disfrutan de nuestra calidad todos los días.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 p-4 shadow-sm h-100 rounded-4">
+                        <div class="text-warning mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary fst-italic mb-4">"Los mejores cachitos y golfeados de Pueblo Nuevo. Llegan calientitos a la oficina y la atención por WhatsApp es sumamente rápida."</p>
+                        <div class="mt-auto d-flex align-items-center gap-3">
+                            <div class="bg-primary text-white rounded-circle fw-bold d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">M</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">María Aranguren</h6>
+                                <small class="text-muted">Pueblo Nuevo, San Cristóbal</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 p-4 shadow-sm h-100 rounded-4">
+                        <div class="text-warning mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary fst-italic mb-4">"Encargué la torta para el cumpleaños de mi hijo y el pan para los pasapalos. Todo impecable, puntualidad exacta y excelente sabor."</p>
+                        <div class="mt-auto d-flex align-items-center gap-3">
+                            <div class="bg-primary text-white rounded-circle fw-bold d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">C</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Carlos Ramírez</h6>
+                                <small class="text-muted">Barrio Obrero, San Cristóbal</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 p-4 shadow-sm h-100 rounded-4">
+                        <div class="text-warning mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary fst-italic mb-4">"El pan artesanal de masa madre es un manjar. Me encanta poder hacer el pedido con anticipación y retirarlo sin hacer colas."</p>
+                        <div class="mt-auto d-flex align-items-center gap-3">
+                            <div class="bg-primary text-white rounded-circle fw-bold d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">D</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Daniela Soto</h6>
+                                <small class="text-muted">La Concordia, San Cristóbal</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-white">
+        <div class="container py-4" style="max-width: 800px;">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase tracking-wider small">Preguntas Frecuentes</span>
+                <h2 class="fw-bold display-6 mt-2">Todo lo que necesitas saber</h2>
+            </div>
+
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item border-0 mb-3 shadow-sm rounded-3 overflow-hidden">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            ¿Con cuánto tiempo de anticipación debo hacer un pedido especial?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            Para tortas personalizadas y eventos recomendamos de 24 a 48 horas de anticipación. Para panadería diaria y pedidos regulares, despachamos el mismo día.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-0 mb-3 shadow-sm rounded-3 overflow-hidden">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            ¿Cuáles son las zonas de cobertura para delivery en San Cristóbal?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            Realizamos entregas rápidas en Barrio Obrero, Pueblo Nuevo, Las Lomas, Paramillo, Centro y zonas aledañas de la ciudad.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-0 mb-3 shadow-sm rounded-3 overflow-hidden">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            ¿Qué métodos de pago aceptan?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">
+                            Aceptamos Pago Móvil, Zelle, efectivo en Dólares (USD) y Pesos Colombianos (COP) para mayor comodidad de nuestros clientes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contacto" class="bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fa-solid fa-wheat-awn text-primary fs-3"></i>
+                        <h4 class="brand-title fw-bold mb-0 text-white">Panadería Táchira</h4>
+                    </div>
+                    <p class="text-white-50 small mb-3">
+                        Tradición, frescura e innovación tecnológica en cada horneada para llevar el mejor pan de San Cristóbal a tu hogar.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="https://instagram.com/osorioxd2026" target="_blank" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/584129186690" target="_blank" class="text-white fs-5"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold text-white mb-3">Horarios de Atención</h5>
+                    <p class="text-white-50 small mb-1">Lunes a Sábado: 6:00 AM – 8:00 PM</p>
+                    <p class="text-white-50 small mb-3">Domingos y Feriados: 7:00 AM – 2:00 PM</p>
+                    <p class="text-white-50 small mb-0"><i class="fa-solid fa-location-dot text-primary me-2"></i> San Cristóbal, Estado Táchira, Venezuela</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold text-white mb-3">Contacto Directo</h5>
+                    <p class="text-white-50 small mb-2"><i class="fab fa-whatsapp text-success me-2"></i> +58 412-9186690</p>
+                    <p class="text-white-50 small mb-3"><i class="fab fa-instagram text-danger me-2"></i> @osorioxd2026</p>
+                    <a href="https://wa.me/584129186690?text=¡Hola!%20Deseo%20hacer%20una%20consulta." target="_blank" class="btn btn-whatsapp btn-sm px-4">
+                        <i class="fab fa-whatsapp me-1"></i> Abrir Chat
+                    </a>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="row text-center text-md-start">
+                <div class="col-md-6 text-white-50 small">
+                    &copy; 2026 Panadería y Pastelería Táchira. Todos los derechos reservados.
+                </div>
+                <div class="col-md-6 text-md-end text-white-50 small">
+                    Desarrollado con Automatización n8n &bull; San Cristóbal
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/584129186690?text=¡Hola!%20Me%20gustaría%20realizar%20un%20pedido%20o%20consulta." target="_blank" class="floating-whatsapp" title="Chatear por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Floating Instagram Button -->
+    <a href="https://instagram.com/osorioxd2026" target="_blank" class="floating-instagram" title="Síguenos en Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
